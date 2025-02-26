@@ -1,0 +1,11 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+== Voraussetzungen
+
+=== Tools
+
+* AsciiDoc
+* IDE (mit Unterstützung für Asciidoc und PlantUML)
+* Confluence-Publisher
+* Graphviz
+* Maven - Password Encryption

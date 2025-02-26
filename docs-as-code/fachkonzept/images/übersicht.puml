@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+'actor actor
+'actor/ "actor/"
+'agent agent
+'artifact artifact
+'boundary boundary
+'card card
+'circle circle
+'cloud cloud
+'collections collections
+'component component
+'control control
+'database database
+'entity entity
+'file file
+'folder folder
+'frame frame
+'interface interface
+'label label
+'node node
+'package package
+'queue queue
+'rectangle rectangle
+'stack stack
+'storage storage
+'usecase usecase
+'usecase/ "usecase/"
+
+storage code #implementation
+cloud git #business
+cloud confluence #business
+artifact application #application
+folder PDF #physical
+
+git -[hidden]up- confluence
+
+confluence <- code
+git <- code : Teil der Codebase
+code -> application : z.B. als Hilfeseiten
+code --> PDF : share per Laufwerk, mail o.ä.
+
+@enduml

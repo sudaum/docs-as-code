@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.sudau.dac</groupId>
+        <artifactId>docsAsCode</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>docsAsCode-ui</artifactId>
+    <name>Docs-as-Code UI</name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <node.version>v16.20.2</node.version>
+        <npm.version>8.19.4</npm.version>
+        <openapi-generator-cli.version>6.6.0</openapi-generator-cli.version>
+        <frontend-maven-plugin.version>1.14.2</frontend-maven-plugin.version>
+        <frontend-maven-plugin.nodeVersion>v18.12.1</frontend-maven-plugin.nodeVersion>
+        <frontend-maven-plugin.npmVersion>9.8.1</frontend-maven-plugin.npmVersion>
+        <maven-dependency-plugin.version>3.6.0</maven-dependency-plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>${frontend-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>npm run build</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build-maven</arguments>
+                            <testFailureIgnore>true</testFailureIgnore>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
+                    <npmVersion>${frontend-maven-plugin.npmVersion}</npmVersion>
+                    <workingDirectory>./</workingDirectory>
+                    <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
+                    <npmDownloadRoot>https://registry.npmjs.org/npm/-/</npmDownloadRoot>
+                    <installDirectory>${project.basedir}</installDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <!-- löschen der generierten Dateien -->
+                            <directory>${project.basedir}/src/app</directory>
+                            <includes>
+                                <include>generated/</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>full-clean</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <!-- löschen package-lock.json -->
+                                    <directory>${project.basedir}</directory>
+                                    <includes>
+                                        <include>package-lock.json</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                                <fileset>
+                                    <!-- löschen der Abhängigkeiten -->
+                                    <directory>${project.basedir}/node_modules</directory>
+                                    <includes>
+                                        <include>**</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                                <fileset>
+                                    <!-- löschen openapi Generator -->
+                                    <directory>${project.basedir}/openapi</directory>
+                                    <includes>
+                                        <include>**</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                                <fileset>
+                                    <!-- löschen der Node-Installation -->
+                                    <directory>${project.basedir}/node</directory>
+                                    <includes>
+                                        <include>**</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                                <fileset>
+                                    <!-- löschen der generierten Dateien -->
+                                    <directory>${project.basedir}/src/app</directory>
+                                    <includes>
+                                        <include>generated/</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <!-- Installation des Node-Compilers -->
+            <id>install</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-dependency-plugin</artifactId>-->
+<!--                        <version>${maven-dependency-plugin.version}</version>-->
+<!--                        <configuration>-->
+<!--                            <artifactItems>-->
+<!--                                <artifactItem>-->
+<!--                                    <groupId>org.openapitools</groupId>-->
+<!--                                    <artifactId>openapi-generator-cli</artifactId>-->
+<!--                                    <version>${openapi-generator-cli.version}</version>-->
+<!--                                    <type>jar</type>-->
+<!--                                    <overWrite>true</overWrite>-->
+<!--                                    <outputDirectory>${project.basedir}/openapi</outputDirectory>-->
+<!--                                    <destFileName>${openapi-generator-cli.version}.jar</destFileName>-->
+<!--                                </artifactItem>-->
+<!--                            </artifactItems>-->
+<!--                        </configuration>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <id>copy openapi-generator</id>-->
+<!--                                <phase>initialize</phase>-->
+<!--                                <goals>-->
+<!--                                    <goal>copy</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                        <version>${frontend-maven-plugin.version}</version>
+                        <configuration>
+                            <workingDirectory>${project.basedir}/</workingDirectory>
+                            <nodeVersion>${node.version}</nodeVersion>
+                            <npmVersion>${npm.version}</npmVersion>
+                            <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
+                            <npmDownloadRoot>https://registry.npmjs.org/npm/-/</npmDownloadRoot>
+                            <installDirectory>${project.basedir}/</installDirectory>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <!-- node und npm Installation -->
+                                <id>install node and npm</id>
+                                <goals>
+                                    <goal>install-node-and-npm</goal>
+                                </goals>
+                                <phase>validate</phase>
+                            </execution>
+                            <execution>
+                                <id>install ng-cli</id>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <arguments>install --no-optional @angular/cli</arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>create ui</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                        <version>${frontend-maven-plugin.version}</version>
+                        <configuration>
+                            <workingDirectory>${project.basedir}/</workingDirectory>
+                            <nodeVersion>${node.version}</nodeVersion>
+                            <npmVersion>${npm.version}</npmVersion>
+                            <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
+                            <npmDownloadRoot>https://registry.npmjs.org/npm/-/</npmDownloadRoot>
+                            <installDirectory>${project.basedir}/</installDirectory>
+                        </configuration>
+                        <executions>
+<!--                            <execution>-->
+<!--                                &lt;!&ndash; Generierung des Clients &ndash;&gt;-->
+<!--                                <id>generate-api</id>-->
+<!--                                <phase>generate-sources</phase>-->
+<!--                                <goals>-->
+<!--                                    <goal>npm</goal>-->
+<!--                                </goals>-->
+<!--                                <configuration>-->
+<!--                                    <arguments>run generateApi</arguments>-->
+<!--                                    <testFailureIgnore>false</testFailureIgnore>-->
+<!--                                </configuration>-->
+<!--                            </execution>-->
+                            <execution>
+                                <!-- compilieren des UIs -->
+                                <id>npm build</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <configuration>
+                                    <arguments>run build</arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <!-- ausführen der JS-Tests -->
+                                <id>npm test</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <configuration>
+                                    <arguments>run test</arguments>
+                                    <testFailureIgnore>true</testFailureIgnore>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

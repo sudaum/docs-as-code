@@ -1,0 +1,16 @@
+{
+  "inputSpec": "../api/src/main/resources/api.yaml",
+  "generatorName": "typescript-angular",
+  "output": "src/app/generated",
+  "cleanOutput": true,
+  "generateSupportingFiles": false,
+  "supportingFiles": [],
+  "additionalPropertiers": {
+    "disallowAdditionalPropertiesIfNotPresent": false,
+    "ngVersion": "15.2.10,",
+    "generateApis": false,
+    "generateApiTests": false,
+    "generateApiDocumentation": false,
+    "providedIn": "root"
+  }
+}

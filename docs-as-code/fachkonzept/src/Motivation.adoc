@@ -1,0 +1,104 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+== Motivation
+
+* Dokumentation soll erklären, warum wer was wie macht oder gemacht hat und wie etwas funktioniert.
+* Dokumentation hat Versionen (und ist damit zu unterschiedlichen Zeitpunkten anders)
+* Es gibt unterschiedliche Arten von Dokumentation (und damit auch unterschiedliche Adressaten)
+* Dokumentation soll genutzt werden
+* Dokumentation soll leicht zu finden sein
+* Dokumentation soll leben
+* Dokumentation soll leicht erweiterbar / änderbar sein
+
+=== Übliche Dokumentationsverfahren
+
+.MS-Word
+****
+[cols="1,1" options="header"]
+|===
+^| Vorteile
+^| Nachteile
+
+| liegt auf dem lokalen Rechner und ist jederzeit erreichbar
+| Änderungen müssen aktiv abgeholt werden
+
+| Kann leicht erweitert oder verändert werden
+| Vor Anpassungen muss man aktiv die aktuellste Version besorgen
+
+
+| Wenn Dokumente in einem Share liegen, bekommt man Änderungen automatisch mit
+| Wenn Dokumente in einem Share liegen, sind konkurrierende Änderungen nich möglich
+
+|
+| Versionierungen müssen manuell im Dokument gepflegt werden
+
+|
+| Konkurrierende Änderungen können nur schwer zusammengeführt werden
+
+|
+| Entweder zahlreiche Dokumente oder monströse Dokumente
+
+|===
+****
+
+.Confluence
+****
+[cols="1,1" options="header"]
+|===
+^| Vorteile
+^| Nachteile
+
+| Dokumentation für jeden lesbar
+| Internet muss verfügbar sein
+
+| konkurrierende Änderungen jederzeit möglich
+| Dokumentationsstruktur häufig chaotisch, d.h. Inhalte finden ist häufig schwierig
+
+| automatische Versionierung
+| Entwickler müssen, die für sie relevante Dokumentation, in einem zusätzlichen Tool suchen
+
+| Versionsänderungen können einfach verglichen werden
+|
+
+|===
+****
+
+=== neue Option
+
+.Docs-As-Code
+****
+[cols="1,1" options="header"]
+|===
+^| Vorteile
+^| Nachteile
+
+| technische Dokumentation ist technik nah
+| Kenntnisse in zusätzlicher Sprache (Asciidoc / Markdown)
+
+| Versionierung der Dokumentation über SCM
+| Publizierung der Dokumentation muss aktiv angestossen werden
+
+| Publizierung kann automatisch per buildscript in einer CI/CD-Pipline angestoßen werden
+|
+
+| Dokumentation ist im gleichen Tool wie der Code
+|
+
+| Aufwand zur Anpassung der technischen Dokumentation bei Änderungen ist niedriger, weil Dokumentation und Code dicht
+ zusammen liegen
+|
+
+| mit geeigneten Tools kann Dokumentation generiert werden. Es werden unterschiedliche Formate unterstützt: HTML, PDF)
+|
+
+| Alle Dokumentationen eines Projekts an einer Stelle
+|
+
+| Generierung von Hilfeseiten zur Integration im auslieferbaren Artefakt
+|
+
+|===
+****
+
+image::übersicht.svg[format=svg, role=text-center]
+
