@@ -12,6 +12,11 @@
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 **/.mvn/wrapper/maven-wrapper.jar
 
+# erstellte UI-Dateien
+**/.angular
+**/dist
+
+
 # Eclipse m2e generated files
 # Eclipse Core
 **/.project
