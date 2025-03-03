@@ -35,9 +35,9 @@ endif::backend-html5[]
 // numbering from here on
 :numbered:
 
-<<<<
+<<<
 include::src/Motivation.adoc[]
 
-<<<<
+<<<
 include::src/Voraussetzungen.adoc[]
 
