@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "generateApi": "rimraf src/app/generated && openapi-generator-cli generate -c openapi-generator-config.json -o src/app/generated",
-    "build-maven": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --watch=false --output-path target/classes/static --base-href /dac/",
+    "build-maven": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --watch=false --output-path target/classes/static --base-href /dacs/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
