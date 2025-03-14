@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+storage "00101010 " as code #lightpink
+cloud "\n   </>    \n" as html #lightblue
+file "PDF \n ___ \n ___" as PDF #physical
+
+code --> html
+code --> PDF
+
+@enduml

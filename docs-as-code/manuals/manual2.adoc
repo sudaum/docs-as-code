@@ -1,1 +1,18 @@
+ifndef::imagesdir[:imagesdir: ./images]
+
 = Manual 2
+
+.digraph
+plantuml::images/digraph.puml[bild1, format=svg]
+
+.SVG
+plantuml::images/uebersicht.puml[format=svg, role=text-center]
+
+.PNG
+plantuml::images/uebersicht.puml[format=png, role=text-right]
+
+.ATXT
+plantuml::images/uebersicht.puml[format=atxt]
+
+.UTXT
+plantuml::images/uebersicht.puml[format=utxt, role=text-center]

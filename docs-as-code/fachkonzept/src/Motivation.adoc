@@ -100,5 +100,5 @@ ifndef::imagesdir[:imagesdir: ../images]
 |===
 ****
 
-image::übersicht.svg[format=svg, role=text-center]
+image::images/uebersicht.svg[format=svg, role=text-center]
 

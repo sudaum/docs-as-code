@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+title
+    Übersicht Docs-As-Code
+end title
+
+storage code #implementation
+cloud git #business
+cloud confluence #business
+artifact application #application
+folder PDF #physical
+
+git -[hidden]up- confluence
+
+confluence <- code
+git <- code : Teil der Codebase
+code -> application : z.B. als Hilfeseiten
+code --> PDF : share per Laufwerk, mail o.ä.
+
+@enduml

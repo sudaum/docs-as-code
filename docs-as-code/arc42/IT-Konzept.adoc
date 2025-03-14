@@ -7,12 +7,14 @@
 // configure DE settings for asciidoc
 include::src/config.adoc[]
 
-= image:arc42-logo.png[arc42] Template
+// = image:arc42-logo.png[arc42] Architekturdokumentation
+= Architekturdokumentation
 :revnumber: 8.2 DE
 :revdate: Januar 2023
 :revremark: (basiert auf AsciiDoc Version)
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Inhaltsverzeichnis
+:doctype: book
 
 //additional style for arc42 help callouts
 ifdef::backend-html5[]

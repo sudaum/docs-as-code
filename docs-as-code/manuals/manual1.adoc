@@ -1,1 +1,45 @@
-= Manual 1
+= Eingebettete Grafik
+
+****
+.digraph
+[plantuml, dot-example, format=svg, role=text-center]
+----
+digraph g {
+    a -> b
+    b -> c
+    c -> d
+    d -> a
+}
+----
+****
+
+****
+.Named Colors
+[plantuml, colors, format=svg, role=text-center]
+----
+@startuml
+colors
+@enduml
+----
+****
+
+
+****
+.corresponding Colors
+[plantuml, color, format=svg, role=text-center]
+----
+@startuml
+color green
+@enduml
+----
+****
+
+****
+.Skinparameter
+[plantuml, skinparameter, format=svg, role=text-center]
+----
+@startuml
+skinparameters
+@enduml
+----
+****
